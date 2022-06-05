@@ -8,7 +8,24 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (arrDates, idx) => {
+  let parsedDate;
+  if(typeof idx === "number"){
+    parsedDate = Math.floor(new Date(arrDates[idx]).getTime() / 1000).toString();;
+  };
+
+  if(!parsedDate){
+    parsedDate = arrDates.map((strDate) => {
+      const epochDate = new Date(strDate).getTime();
+      return Math.floor(epochDate / 1000).toString();
+    });
+
+    parsedDate.sort((a,b )=> a-b);
+    return parsedDate.join("-");
+  };
+
+  return parsedDate;
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
